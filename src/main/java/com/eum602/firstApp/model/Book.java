@@ -1,15 +1,17 @@
 package com.eum602.firstApp.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Set;
+/*Spring is a complete and a modular framework for developing Enterprise Applications in Java while Hibernate is an Object Relational Mapping framework specialized in data persisting and retrieving from a database.*/
 @Entity
 public class Book {
     private String title;
     private String isbn;
+
+    @ManyToMany
+    @JoinTable(name = "author_book",joinColumns = @JoinColumn(name = "book_id"),inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

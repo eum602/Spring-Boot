@@ -1,9 +1,6 @@
 package com.eum602.firstApp.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Set;
 @Entity
 public class Author {
@@ -12,6 +9,8 @@ public class Author {
     private Long id;
     private String firstName;
     private String lastName;
+
+    @ManyToMany(mappedBy = "authors") //setting a many to many relationship to "books"; mapped by "authors"
     private Set<Book> books;
 
 
