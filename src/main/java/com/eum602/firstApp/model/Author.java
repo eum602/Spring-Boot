@@ -1,6 +1,7 @@
 package com.eum602.firstApp.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 @Entity
 public class Author {
@@ -50,5 +51,19 @@ public class Author {
 
     public void setBooks(Set<Book> books) {
         this.books = books;
+    }
+
+    @Override
+    public boolean equals(Object o) {//both generated with alt + insert and selecting only "id"; also non selecting nothing for "non null" fields because
+        //"id" can be null
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return Objects.equals(id, author.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

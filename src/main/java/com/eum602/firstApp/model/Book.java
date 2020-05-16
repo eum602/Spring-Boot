@@ -1,6 +1,7 @@
 package com.eum602.firstApp.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 /*Spring is a complete and a modular framework for developing Enterprise Applications in Java while Hibernate is an Object Relational Mapping framework specialized in data persisting and retrieving from a database.*/
 @Entity
@@ -46,5 +47,18 @@ public class Book {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Objects.equals(id, book.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
