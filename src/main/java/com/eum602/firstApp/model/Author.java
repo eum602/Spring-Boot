@@ -54,6 +54,16 @@ public class Author {
     }
 
     @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", books=" + books +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {//both generated with alt + insert and selecting only "id"; also non selecting nothing for "non null" fields because
         //"id" can be null
         if (this == o) return true;
