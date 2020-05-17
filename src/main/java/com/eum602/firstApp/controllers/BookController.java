@@ -16,6 +16,6 @@ public class BookController {
     @RequestMapping("/books") //invoked when visiting url books. Method invoked by the spring mvc framework
     public String getBooks(Model model){//configuring spring to provide a model
         model.addAttribute("books",bookRepository.findAll());//find and return all books to "books" attribute.
-        return "books";//return the "books" string which tells spring mvc to apply the view books.
+        return "books/list";//return list.html under resources/books
     }
 }
