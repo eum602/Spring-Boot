@@ -23,28 +23,34 @@ public class BootstrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        Publisher publisher = new Publisher();
+        publisher.setAddressLine1("NN");
+        publisher.setName("Editorial - NN");
+        publisherRepository.save(publisher);
+
         Author erick = new Author("Erick","Pacheco");
         Book blockchainBook = new Book("Blockchain behind the scenes","123456");
         erick.getBooks().add(blockchainBook);
         blockchainBook.getAuthors().add(erick);
+        blockchainBook.setPublisher(publisher);
+        publisher.getBooks().add(blockchainBook);
         //saving repositories into the database
         authorRepository.save(erick);
         bookRepository.save(blockchainBook);
+        publisherRepository.save(publisher);
 
         Author arturo =  new Author("Arturo","Lord");
         Book industrialBook = new Book("Industrial Engineering","1234");
         arturo.getBooks().add(industrialBook);
         industrialBook.getAuthors().add(arturo);
+        industrialBook.setPublisher(publisher);
+        publisher.getBooks().add(industrialBook);
         authorRepository.save(arturo);
         bookRepository.save(industrialBook);
+        publisherRepository.save(publisher);
 
         System.out.println("Started in bootstrap");
         System.out.println("Number of books: " + bookRepository.count());
-
-        Publisher publisher = new Publisher("Yessica","NN","NN","Avenue ...","123");
-        publisherRepository.save(publisher);
-        System.out.println("After adding a publisher to the h2 in memory database: ");
-        System.out.println("Number of publishers: " + publisherRepository.count());
-
+        System.out.println("Number of publisher books: " + publisher.getBooks().size());
     }
 }

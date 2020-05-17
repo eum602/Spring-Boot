@@ -1,10 +1,9 @@
 package com.eum602.firstApp.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Publisher {
@@ -14,16 +13,23 @@ public class Publisher {
     private String state;
     private String zip;
 
+    @OneToMany //the publisher is one but it has many book
+    @JoinColumn(name = "publisher_id") //gives hibernate a hand to add a publisher id to the book record 
+    private Set<Book> books = new HashSet<>();
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    public Publisher(String name, String addressLine1, String city, String state, String zip) {
-        this.name = name;
-        this.addressLine1 = addressLine1;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
+    public Publisher() {
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     public String getName() {
