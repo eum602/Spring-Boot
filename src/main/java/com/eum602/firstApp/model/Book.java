@@ -1,6 +1,7 @@
 package com.eum602.firstApp.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 /*Spring is a complete and a modular framework for developing Enterprise Applications in Java while Hibernate is an Object Relational Mapping framework specialized in data persisting and retrieving from a database.*/
@@ -11,11 +12,16 @@ public class Book {
 
     @ManyToMany
     @JoinTable(name = "author_book",joinColumns = @JoinColumn(name = "book_id"),inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Author> authors;
+    private Set<Author> authors = new HashSet<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    public Book(String title, String isbn) {
+        this.title = title;
+        this.isbn = isbn;
+    }
 
     public Long getId() {
         return id;
@@ -49,15 +55,7 @@ public class Book {
         this.isbn = isbn;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "title='" + title + '\'' +
-                ", isbn='" + isbn + '\'' +
-                ", authors=" + authors +
-                ", id=" + id +
-                '}';
-    }
+
 
     @Override
     public boolean equals(Object o) {
