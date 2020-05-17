@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.eum602</groupId>
-	<artifactId>firstApp</artifactId>
+	<artifactId>first-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>firstApp</name>
 	<description>First App Srping Project</description>
