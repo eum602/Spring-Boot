@@ -15,6 +15,8 @@ public class Author {
     @ManyToMany(mappedBy = "authors") //setting a many to many relationship to "books"; mapped by "authors"
     private Set<Book> books = new HashSet<>();
 
+    public Author() {
+    }
 
     public Long getId() {
         return id;
