@@ -14,9 +14,8 @@ public class DependencyInjectionApplication {
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(DependencyInjectionApplication.class, args);
 		Controller1 controller1 = (Controller1) ctx.getBean("controller1");//ask the spring context to create the instance object of Controller1
-		String greeting = controller1.sayHello();
-
-		System.out.println(greeting);
+		System.out.println("-------- Primary Bean");
+		System.out.println(controller1.sayHello());
 
 		System.out.println("-------- Property Injected Controller");
 		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
