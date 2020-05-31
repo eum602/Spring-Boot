@@ -1,5 +1,6 @@
 package com.eum602.di;
 
+import com.eum602.di.controllers.ConstructorInjectedController;
 import com.eum602.di.controllers.Controller1;
 import com.eum602.di.controllers.PropertyInjectedController;
 import com.eum602.di.controllers.SetterInjectedController;
@@ -23,7 +24,11 @@ public class DependencyInjectionApplication {
 
 		System.out.println("---------Setter Injected Controller");
 		SetterInjectedController setterInjectedController = (SetterInjectedController) ctx.getBean("setterInjectedController");
-		System.out.println(setterInjectedController.getGreeting());;
+		System.out.println(setterInjectedController.getGreeting());
+
+		System.out.println("----------Constructor Injected Controller");
+		ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
+		System.out.println(constructorInjectedController.getGreeting());
 	}
 
 }
