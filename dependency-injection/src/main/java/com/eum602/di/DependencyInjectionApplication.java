@@ -1,6 +1,7 @@
 package com.eum602.di;
 
 import com.eum602.di.controllers.Controller1;
+import com.eum602.di.controllers.PropertyInjectedController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -14,6 +15,10 @@ public class DependencyInjectionApplication {
 		String greeting = controller1.sayHello();
 
 		System.out.println(greeting);
+
+		System.out.println("-------- Property Injected Controller");
+		PropertyInjectedController propertyInjectedController = (PropertyInjectedController) ctx.getBean("propertyInjectedController");
+		System.out.println(propertyInjectedController.getGreeting());
 	}
 
 }
