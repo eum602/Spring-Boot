@@ -14,8 +14,8 @@ The main pom posseses as a modules the pet-clinic-data and pet-clinic-web.
 ### Using Maven release plugin
 Basically two commands can be used to submit a next release:
 ```shell script
-$ mvn release:prepare
-$ mvn release:perform
+$ mvn release:prepare # prepares and push the release
+$ mvn release:perform # deletes intermediate files of prepare command.
 ```
 
 ### Troubleshoting

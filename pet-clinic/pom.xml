@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.eum602</groupId>
 	<artifactId>pet-clinic</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<modules>
 		<module>pet-clinic-data</module>
 		<module>pet-clinic-web</module>
@@ -33,6 +33,7 @@
 				<artifactId>maven-release-plugin</artifactId>
 				<configuration>
 					<goals>install</goals>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
 				</configuration>
 			</plugin>
 		</plugins>
